@@ -1,22 +1,22 @@
 :root {
-  --bg: #f7f6f2;
+  --bg: #eef8fc;
   --surface: #fff;
-  --surface-soft: #f1f0eb;
-  --fg: #222328;
-  --muted: #5d5e66;
-  --accent: #b8432c;
-  --accent-dark: #8f3220;
+  --surface-soft: #e1f2f8;
+  --fg: #123047;
+  --muted: #476579;
+  --accent: #066b8d;
+  --accent-dark: #075985;
   --on-accent: #fff;
-  --accent-soft: #fff0eb;
-  --glow: #ffe0d5;
-  --placeholder: #6b6c73;
-  --line: #e3e1da;
-  --control-border: #8a8a85;
+  --accent-soft: #dff4fb;
+  --glow: #b9e7f5;
+  --placeholder: #557486;
+  --line: #c7e0eb;
+  --control-border: #5f7c8b;
   --err: #b91c1c;
-  --shadow: 0 20px 60px rgba(40, 32, 26, .08);
+  --shadow: 0 20px 60px rgba(20, 87, 112, .12);
 }
 @media (prefers-color-scheme: dark) {
-  :root { --bg: #181818; --surface: #232323; --surface-soft: #2e2d2b; --fg: #f5f3ed; --muted: #b2b0a9; --accent: #ff856a; --accent-dark: #ffab98; --on-accent: #1a1210; --accent-soft: #452b25; --glow: #3a2620; --placeholder: #9a9890; --line: #41413d; --control-border: #8c8a84; --err: #ff9b92; --shadow: 0 20px 60px rgba(0, 0, 0, .25); }
+  :root { --bg: #0b1f2a; --surface: #123142; --surface-soft: #194657; --fg: #e8f7ff; --muted: #b0cfdb; --accent: #67d4f2; --accent-dark: #9ae8fa; --on-accent: #06202a; --accent-soft: #154253; --glow: #16465a; --placeholder: #9fc4d2; --line: #2d5b6d; --control-border: #8bb3c1; --err: #ff9b92; --shadow: 0 20px 60px rgba(0, 0, 0, .3); }
 }
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
@@ -25,7 +25,7 @@ body {
   background: radial-gradient(circle at 80% -10%, var(--glow) 0, transparent 32rem), var(--bg);
   font: 1rem/1.6 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
-body::before { content: ""; position: fixed; inset: 0; pointer-events: none; opacity: .18; background-image: radial-gradient(#b7a998 1px, transparent 1px); background-size: 22px 22px; mask-image: linear-gradient(to bottom, black, transparent 70%); }
+body::before { content: ""; position: fixed; inset: 0; pointer-events: none; opacity: .18; background-image: radial-gradient(#8bc4d8 1px, transparent 1px); background-size: 22px 22px; mask-image: linear-gradient(to bottom, black, transparent 70%); }
 header, main, footer { width: min(100% - 2rem, 58rem); margin-inline: auto; }
 .hero { padding: 5rem 0 3rem; position: relative; }
 .eyebrow, .section-kicker { margin: 0 0 .7rem; color: var(--accent-dark); font-size: .76rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
