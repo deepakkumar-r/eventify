@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src data:; connect-src https://generativelanguage.googleapis.com; base-uri 'none'; form-action 'none'">
+  <meta name="description" content="Plan weddings, birthdays and community events with a budget split, dated timeline, vendor checklist and ideas.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="data:,">
+  <title>Eventify</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#main">Skip to main content</a>
+  <header class="hero">
+    <div class="eyebrow">Your celebration, thoughtfully planned</div>
+    <h1>Make the moments <span>memorable.</span></h1>
+    <p>Build a clear, confident plan for weddings, birthdays and community events in minutes.</p>
+    <div class="hero-badges" role="group" aria-label="Planner features">
+      <span>Budget clarity</span><span>Smart timeline</span><span>Vendor ready</span>
+    </div>
+  </header>
+  <main id="main">
+    <form id="planner-form" class="planner-card" novalidate>
+      <div class="card-heading">
+        <div>
+          <p class="section-kicker">Let’s get started</p>
+          <h2>Tell us about your event</h2>
+        </div>
+        <span class="step" aria-hidden="true">01 <span>/ 01</span></span>
+      </div>
+      <fieldset>
+        <legend class="sr">Event details</legend>
+        <div class="field field-wide"><label for="type">What are you planning?</label>
+          <select id="type" name="type" required aria-describedby="type-error">
+            <option value="wedding">Wedding</option><option value="birthday">Birthday</option><option value="community">Community event</option>
+          </select><p class="error" role="alert" id="type-error"></p></div>
+        <div class="field"><label for="guests">Guest count</label>
+          <input id="guests" name="guests" type="number" min="1" max="5000" inputmode="numeric" placeholder="e.g. 120" required aria-describedby="guests-error"><p class="error" role="alert" id="guests-error"></p></div>
+        <div class="field"><label for="budget">Total budget</label>
+          <input id="budget" name="budget" type="number" min="1" max="1000000000" inputmode="numeric" placeholder="e.g. 500000" required aria-describedby="budget-error"><p class="error" role="alert" id="budget-error"></p></div>
+        <div class="field"><label for="date">Event date</label>
+          <input id="date" name="date" type="date" required aria-describedby="date-error"><p class="error" role="alert" id="date-error"></p></div>
+        <div class="field"><label for="theme">Theme <span>(optional)</span></label>
+          <input id="theme" name="theme" type="text" maxlength="60" autocomplete="off" placeholder="e.g. Garden party" aria-describedby="theme-error"><p class="error" role="alert" id="theme-error"></p></div>
+        <div class="field field-wide api-field"><label for="apikey">Gemini API key <span>(optional)</span></label>
+          <input id="apikey" name="apikey" type="password" autocomplete="off" placeholder="Add a key for extra AI ideas" aria-describedby="apikey-help">
+          <p id="apikey-help" class="help">Your key stays in this browser tab and is never saved.</p></div>
+      </fieldset>
+      <button type="submit">Create my plan <span aria-hidden="true">→</span></button>
+      <div class="form-meta"><span id="draft-status">Your draft is saved on this device.</span><span id="form-progress">0/5 complete</span></div>
+    </form>
+    <p id="status" role="status" aria-live="polite"></p>
+    <section id="results" class="results-card" hidden aria-labelledby="results-title">
+      <div class="results-heading">
+        <div><p class="section-kicker">Your roadmap</p><h2 id="results-title" tabindex="-1">A plan made for you</h2></div>
+        <span class="plan-mark" aria-hidden="true">✦</span>
+      </div>
+      <div class="actions" role="group" aria-label="Plan actions">
+        <button id="download-plan" class="secondary-button" type="button">Download plan</button>
+        <button id="print-plan" class="secondary-button" type="button">Print plan</button>
+      </div>
+      <p id="summary"></p>
+      <div class="score-panel">
+        <div class="score-ring" role="img" aria-label="Readiness score out of 100"><strong id="plan-score">0</strong><span>/ 100</span></div>
+        <div><p class="section-kicker">Readiness score</p><h3 id="score-title">Your plan is taking shape</h3><p id="score-detail"></p><ul id="score-reasons"></ul></div>
+      </div>
+      <div class="result-grid">
+        <div class="result-section"><h3>Budget <span>01</span></h3>
+        <table><caption class="sr">Budget split by category</caption>
+        <thead><tr><th scope="col">Category</th><th scope="col">Share</th><th scope="col">Amount</th></tr></thead><tbody id="budget-body"></tbody></table>
+        </div>
+        <div class="result-section"><h3>Timeline <span>02</span></h3><ol id="timeline"></ol></div>
+        <div class="result-section"><h3>Vendor checklist <span>03</span></h3><ul id="checklist" class="plain"></ul></div>
+        <div class="result-section"><h3>Ideas <span>04</span></h3><ul id="ideas"></ul></div>
+        <div class="result-section ai-section"><h3>AI suggestions <span>Optional</span></h3><p id="ai-ideas" class="pre" aria-live="polite"></p></div>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer"><p>Plans are generated on your device. Optional AI ideas use Google Gemini only when you add a key.</p></footer>
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>
